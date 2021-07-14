@@ -7,12 +7,8 @@ String dateToStringWithOffset(DateTime date) {
   var offsetMinutes = date.timeZoneOffset.inMinutes % 60;
   var dateString = "${date.toIso8601String()} ";
 
-  dateString += "UTC" +
-      ((offsetHours > 10 || offsetHours < 0)
-          ? "$offsetHours"
-          : "0$offsetHours");
-  dateString += ":" +
-      ((offsetMinutes.abs() > 10) ? "$offsetMinutes" : "0$offsetMinutes:00");
+  dateString += "UTC" + ((offsetHours > 10 || offsetHours < 0) ? "$offsetHours" : "0$offsetHours");
+  dateString += ":" + ((offsetMinutes.abs() > 10) ? "$offsetMinutes" : "0$offsetMinutes:00");
 
   return dateString;
 }
@@ -61,14 +57,14 @@ dynamic convertEnumCaseToValue(dynamic key) {
   }
 
   switch (key) {
-      case OSSession.DIRECT:
-        return "DIRECT";
-      case OSSession.INDIRECT:
-        return "INDIRECT";
-      case OSSession.UNATTRIBUTED:
-        return "UNATTRIBUTED";
-      case OSSession.DISABLED:
-        return "DISABLED";
+    case OSSession.DIRECT:
+      return "DIRECT";
+    case OSSession.INDIRECT:
+      return "INDIRECT";
+    case OSSession.UNATTRIBUTED:
+      return "UNATTRIBUTED";
+    case OSSession.DISABLED:
+      return "DISABLED";
   }
 
   return key;
@@ -78,9 +74,6 @@ dynamic convertEnumCaseToValue(dynamic key) {
 abstract class JSONStringRepresentable {
   String jsonRepresentation();
 
-  String convertToJsonString(Map<String, dynamic>? object) => JsonEncoder
-      .withIndent('  ')
-      .convert(object)
-      .replaceAll("\\n", "\n")
-      .replaceAll("\\", "");
+  String convertToJsonString(Map<String, dynamic> object) =>
+      JsonEncoder.withIndent('  ').convert(object).replaceAll("\\n", "\n").replaceAll("\\", "");
 }

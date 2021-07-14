@@ -4,12 +4,11 @@ import 'package:onesignal_flutter/src/utils.dart';
 /// the handler returns an OSInAppMessageAction object so the Dart code can act accordingly
 /// This allows for custom action events within Dart
 class OSInAppMessageAction extends JSONStringRepresentable {
-
   // Name of the action event defined for the IAM element
-  String? clickName;
+  String clickName;
 
   // URL given to the IAM element defined in the dashboard
-  String? clickUrl;
+  String clickUrl;
 
   // Determines if a first click has occurred or not on the IAM element
   bool firstClick = false;
@@ -32,5 +31,4 @@ class OSInAppMessageAction extends JSONStringRepresentable {
       'closes_message': this.closesMessage,
     });
   }
-
 }
